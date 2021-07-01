@@ -7,10 +7,12 @@ using UnityEditor;
 public class HexMapEditor : Editor
 {
     private HexMapGenerator g;
+    private Transform grid_list;
 
     private void OnEnable ()
     {
         g = target as HexMapGenerator;
+        grid_list = g.transform.Find( "MapGrids" );
     }
 
     private void OnSceneGUI ()
@@ -62,10 +64,8 @@ public class HexMapEditor : Editor
 
     private void PaintOne ()
     {
-        var gameobj = Instantiate( g.cur_block ,
-             g.mouse_grid_position , Quaternion.identity );
-        gameobj.transform.localScale = Vector3.one * 1.5f;
-        gameobj.transform.rotation = Quaternion.Euler( 0 , 30 , 0 );
+        var gameobj = Instantiate( g.cur_block , g.mouse_grid_position , Quaternion.identity , grid_list );
+        gameobj.transform.localScale = g.prefab_scale;
     }
 
     //Get paint shape from collider

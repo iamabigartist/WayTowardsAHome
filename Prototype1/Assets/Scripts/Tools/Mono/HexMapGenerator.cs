@@ -11,6 +11,8 @@ public class HexMapGenerator : MonoBehaviour
     //所有Mesh的大小调整参数
     public float mesh_scale;
 
+    public Vector3 prefab_scale => Vector3.one * mesh_scale * ruler.gird_scale;
+
     //画笔内容
     public GameObject cur_block;
 
@@ -40,6 +42,6 @@ public class HexMapGenerator : MonoBehaviour
         Gizmos.color = new Color( 1 , 1 , 1 , 0.3f );
         Gizmos.DrawMesh(
             pen_grid ,
-            mouse_grid_position , Quaternion.identity , Vector3.one * mesh_scale * ruler.gird_scale );
+            mouse_grid_position , Quaternion.identity , prefab_scale );
     }
 }
