@@ -1,18 +1,9 @@
 ﻿using UnityEngine;
 
+[System.Serializable]
 public struct HexMapRuler
 {
     static public float GWIDTH, GHEIGHT;
-
-    public float gird_scale;
-
-    /// <summary>
-    /// leftdown_point,x:left->right,y:down->up
-    /// </summary>
-    public Vector2 origin;
-
-    public float Gwidth { get => gird_scale * GWIDTH; }
-    public float Gheight { get => gird_scale * GHEIGHT; }
 
     static HexMapRuler ()
     {
@@ -20,10 +11,17 @@ public struct HexMapRuler
         GHEIGHT = Mathf.Sqrt( 3 ) / 2;
     }
 
+    public float gird_scale;
+
+    public Vector2 origin_ld;
+
+    public float Gwidth { get => gird_scale * GWIDTH; }
+    public float Gheight { get => gird_scale * GHEIGHT; }
+
     public HexMapRuler ( float gird_scale , Vector2 origin )
     {
         this.gird_scale = gird_scale;
-        this.origin = origin;
+        this.origin_ld = origin;
     }
 
     private bool CheckIfCenter ( Vector2Int gird_pos )
@@ -33,13 +31,13 @@ public struct HexMapRuler
 
     private Vector2 Gird2WorldPoint ( Vector2Int gird_pos )
     {
-        return new Vector2( gird_pos.x * Gwidth , gird_pos.y * Gheight ) + origin;
+        return new Vector2( gird_pos.x * Gwidth , gird_pos.y * Gheight ) + origin_ld;
     }
 
     private Vector2Int World2GirdPoint ( Vector2 world_pos )
     {
-        float x_offset = world_pos.x - origin.x;
-        float y_offset = world_pos.y - origin.y;
+        float x_offset = world_pos.x - origin_ld.x;
+        float y_offset = world_pos.y - origin_ld.y;
         int x = Mathf.CeilToInt( Mathf.FloorToInt( x_offset / ( Gwidth / 2 ) ) / 2f );
         int y = Mathf.CeilToInt( Mathf.FloorToInt( y_offset / ( Gheight / 2 ) ) / 2f );
         return new Vector2Int( x , y );
