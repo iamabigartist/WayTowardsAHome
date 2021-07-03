@@ -8,16 +8,21 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class HexMapGenerator : MonoBehaviour
 {
-    //所有Mesh的大小调整参数
-    public float mesh_scale;
-
     public Vector3 prefab_scale => Vector3.one * mesh_scale * ruler.gird_scale;
+
+    public float Paint_rotation { get => paint_rotation; set => paint_rotation = value; }
 
     //画笔内容
     public GameObject cur_block;
 
+    //所有Mesh的大小调整参数
+    public float mesh_scale;
+
     //绘制高度
     public float paint_height;
+
+    //绘制旋转
+    private float paint_rotation;
 
     //画笔块
     public Mesh pen_grid;

@@ -27,11 +27,22 @@ public class HexMapEditor : Editor
 
     public override void OnInspectorGUI ()
     {
-        g.cur_block = EditorGUILayout.ObjectField( label: new GUIContent( "样本地图块" , "是一个设置好的地图块的Prefab" ) , obj: g.cur_block , objType: typeof( GameObject ) , allowSceneObjects: false ) as GameObject;
-        EditorGUILayout.PropertyField( serializedObject.FindProperty( "mesh_scale" ) , new GUIContent( "模型调整参数" ) );
+        EditorGUILayout.PropertyField(
+            serializedObject.FindProperty( "ruler" ) ,
+            new GUIContent( "地图设置" ) );
+        EditorGUILayout.PropertyField(
+            serializedObject.FindProperty( "paint_height" ) ,
+            new GUIContent( "绘制高度" ) );
+        EditorGUILayout.PropertyField(
+            serializedObject.FindProperty( "paint_rotation" ) ,
+            new GUIContent( "画笔旋转角度" ) );
 
-        g.paint_height = EditorGUILayout.FloatField( label: new GUIContent( "绘制高度" ) , value: g.paint_height , style: EditorStyles.numberField );
-        EditorGUILayout.PropertyField( serializedObject.FindProperty( "ruler" ) , new GUIContent( "地图设置" ) );
+        EditorGUILayout.PropertyField(
+            serializedObject.FindProperty( "cur_block" ) ,
+            new GUIContent( "样本地图块" , "是一个设置好的地图块的Prefab" ) );
+        EditorGUILayout.PropertyField(
+            serializedObject.FindProperty( "mesh_scale" ) ,
+            new GUIContent( "模型调整参数" ) );
 
         serializedObject.ApplyModifiedProperties();
     }
