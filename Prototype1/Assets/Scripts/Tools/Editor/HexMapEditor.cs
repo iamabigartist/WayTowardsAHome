@@ -46,8 +46,8 @@ public class HexMapEditor : Editor
             new GUIContent( "模型调整参数" ) );
 
         x = GUILayout.Toolbar( x ,
-            new GUIContent[2] {
-            EditorGUIUtility.ObjectContent( null , typeof( BoxCollider ) ),
+            new GUIContent[] {
+            EditorGUIUtility.icon( null , typeof( BoxCollider ) ),
             EditorGUIUtility.ObjectContent( null , typeof( SphereCollider ) )} );
 
         serializedObject.ApplyModifiedProperties();
