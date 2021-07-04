@@ -9,6 +9,8 @@ public class HexMapEditor : Editor
     private HexMapGenerator g;
     private Transform grid_list;
 
+    private int x = 0;
+
     private void OnEnable ()
     {
         g = target as HexMapGenerator;
@@ -33,9 +35,8 @@ public class HexMapEditor : Editor
         EditorGUILayout.PropertyField(
             serializedObject.FindProperty( "paint_height" ) ,
             new GUIContent( "绘制高度" ) );
-        EditorGUILayout.PropertyField(
-            serializedObject.FindProperty( "paint_rotation" ) ,
-            new GUIContent( "画笔旋转角度" ) );
+
+        g.Paint_rotation = EditorGUILayout.FloatField( new GUIContent( "画笔旋转角度" ) , g.Paint_rotation );
 
         EditorGUILayout.PropertyField(
             serializedObject.FindProperty( "cur_block" ) ,
@@ -43,6 +44,11 @@ public class HexMapEditor : Editor
         EditorGUILayout.PropertyField(
             serializedObject.FindProperty( "mesh_scale" ) ,
             new GUIContent( "模型调整参数" ) );
+
+        x = GUILayout.Toolbar( x ,
+            new GUIContent[] {
+            EditorGUIUtility.icon( null , typeof( BoxCollider ) ),
+            EditorGUIUtility.ObjectContent( null , typeof( SphereCollider ) )} );
 
         serializedObject.ApplyModifiedProperties();
     }
@@ -75,7 +81,7 @@ public class HexMapEditor : Editor
 
     private void PaintOne ()
     {
-        var gameobj = Instantiate( g.cur_block , g.mouse_grid_position , Quaternion.identity , grid_list );
+        var gameobj = Instantiate( g.cur_block , g.mouse_grid_position , Quaternion.AngleAxis( g.Paint_rotation , Vector3.up ) , grid_list );
         gameobj.transform.localScale = g.prefab_scale;
     }
 

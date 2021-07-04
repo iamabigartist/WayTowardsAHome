@@ -373,12 +373,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0114aeb67e9354c921b50aa93b3ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh_scale: 0.5
   cur_block: {fileID: 777793587377601379, guid: 84d9dccd7aefcb2489c4caa27e32fa5d, type: 3}
-  paint_height: 0
+  mesh_scale: 0.5
+  paint_height: 0.02
   pen_grid: {fileID: 5060444177187149915, guid: 25b8dbe3ce90eb84aa0d94ab040fe00b, type: 3}
   ruler:
     gird_scale: 1
     origin_ld: {x: 0, y: 0}
-  mouse_position: {x: 38.47892, y: -0.000015258789, z: 216.07632}
-  mouse_grid_position: {x: 39, y: -0.000015258789, z: 216.50635}
+  mouse_position: {x: -239.57132, y: 0.019996643, z: 81.4859}
+  mouse_grid_position: {x: -240, y: 0.019996643, z: 81.40639}
