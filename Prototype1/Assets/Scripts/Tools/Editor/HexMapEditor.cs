@@ -9,8 +9,6 @@ public class HexMapEditor : Editor
     private HexMapGenerator g;
     private Transform grid_list;
 
-    private int x = 0;
-
     private void OnEnable ()
     {
         g = target as HexMapGenerator;
@@ -19,12 +17,14 @@ public class HexMapEditor : Editor
 
     private void OnSceneGUI ()
     {
+        InputAction();
+
         Ray r = HandleUtility.GUIPointToWorldRay( Event.current.mousePosition );
         g.mouse_position = r.RayY2V3( g.paint_height );
         Handles.DrawWireDisc( g.mouse_position , Vector3.up , 2 );
         g.mouse_grid_position = g.ruler.Snap( g.mouse_position.XZ() ).XZ2V3( g.mouse_position.y );
 
-        InputAction();
+        //Debug.Log( GetGrid( g.mouse_grid_position ) );
     }
 
     public override void OnInspectorGUI ()
@@ -35,8 +35,7 @@ public class HexMapEditor : Editor
         EditorGUILayout.PropertyField(
             serializedObject.FindProperty( "paint_height" ) ,
             new GUIContent( "绘制高度" ) );
-
-        g.Paint_rotation = EditorGUILayout.FloatField( new GUIContent( "画笔旋转角度" ) , g.Paint_rotation );
+        EditorGUILayout.IntField( new GUIContent( "画笔旋转角度" ) , g.Paint_rotation , EditorStyles.label );
 
         EditorGUILayout.PropertyField(
             serializedObject.FindProperty( "cur_block" ) ,
@@ -44,11 +43,6 @@ public class HexMapEditor : Editor
         EditorGUILayout.PropertyField(
             serializedObject.FindProperty( "mesh_scale" ) ,
             new GUIContent( "模型调整参数" ) );
-
-        x = GUILayout.Toolbar( x ,
-            new GUIContent[] {
-            EditorGUIUtility.icon( null , typeof( BoxCollider ) ),
-            EditorGUIUtility.ObjectContent( null , typeof( SphereCollider ) )} );
 
         serializedObject.ApplyModifiedProperties();
     }
@@ -72,18 +66,35 @@ public class HexMapEditor : Editor
     private void InputAction ()
     {
         if (IfPaint()) { PaintOne(); }
+        if (IfRotate()) { g.Paint_rotation = g.Paint_rotation / 60 + 1; }
     }
 
     private bool IfPaint ()
     {
-        return Event.current.keyCode == KeyCode.Alpha1 && Event.current.type == EventType.KeyDown;
+        return Event.current.keyCode == KeyCode.Alpha1 && Event.current.type == EventType.KeyUp;
+    }
+
+    private bool IfRotate ()
+    {
+        return Event.current.keyCode == KeyCode.Alpha3 && Event.current.type == EventType.KeyUp;
     }
 
     private void PaintOne ()
     {
-        var gameobj = Instantiate( g.cur_block , g.mouse_grid_position , Quaternion.AngleAxis( g.Paint_rotation , Vector3.up ) , grid_list );
+        var gameobj = Instantiate( g.cur_block ,
+            //g.mouse_grid_position.RotateAround( g.mouse_grid_position , g.Paint_rotation , Vector3.up ) ,
+            g.mouse_grid_position ,
+            Quaternion.Euler( 0 , g.Paint_rotation , 0 ) , grid_list );
         gameobj.transform.localScale = g.prefab_scale;
     }
+
+    //private GameObject GetGrid ( Vector3 pos )
+    //{
+    //    var list = Physics.OverlapSphere( pos , g.prefab_scale.magnitude / 5.0f );
+    //    if (list.Length == 0) return null;
+    //    if (list.Length > 1) throw new System.Exception( "GridOverlap!" );
+    //    return list[0].gameObject;
+    //}
 
     //Get paint shape from collider
     //Get paint shape from selection

@@ -5,6 +5,15 @@ using UnityEngine;
 
 public static class VectorExtension
 {
+    /// <summary>
+    /// Rotate a point along a aixs which is through the origin
+    /// </summary>
+    /// <returns>The rotated point position</returns>
+    public static Vector3 RotateAround ( this Vector3 point , Vector3 origin , float angle , Vector3 axis )
+    {
+        return origin + Quaternion.AngleAxis( angle , axis ) * ( point - origin );
+    }
+
     public static Vector3 RayX2V3 ( this Ray r , float v )
     {
         float c = ( v - r.origin.x ) / r.direction.x;

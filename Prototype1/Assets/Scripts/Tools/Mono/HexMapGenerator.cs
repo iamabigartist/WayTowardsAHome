@@ -10,7 +10,14 @@ public class HexMapGenerator : MonoBehaviour
 {
     public Vector3 prefab_scale => Vector3.one * mesh_scale * ruler.gird_scale;
 
-    public float Paint_rotation { get => paint_rotation; set => paint_rotation = value; }
+    public int Paint_rotation
+    {
+        get => paint_rotation * 60;
+        set
+        {
+            paint_rotation = value % 6;
+        }
+    }
 
     //»­±ÊÄÚÈÝ
     public GameObject cur_block;
@@ -22,7 +29,7 @@ public class HexMapGenerator : MonoBehaviour
     public float paint_height;
 
     //»æÖÆÐý×ª
-    private float paint_rotation;
+    private int paint_rotation;
 
     //»­±Ê¿é
     public Mesh pen_grid;
@@ -46,7 +53,7 @@ public class HexMapGenerator : MonoBehaviour
     {
         Gizmos.color = new Color( 1 , 1 , 1 , 0.3f );
         Gizmos.DrawMesh(
-            pen_grid ,
-            mouse_grid_position , Quaternion.identity , prefab_scale );
+            cur_block.GetComponentInChildren<MeshFilter>().sharedMesh ,
+            mouse_grid_position , Quaternion.Euler( 0 , Paint_rotation , 0 ) , prefab_scale );
     }
 }
