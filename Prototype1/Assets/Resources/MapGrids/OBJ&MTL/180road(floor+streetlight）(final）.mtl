@@ -1,7 +1,7 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# 创建的文件:05.07.2021 01:31:54
+# 创建的文件:05.07.2021 16:04:25
 
-newmtl Material__27
+newmtl _城市公路_180road_floor_streetlight__final_Material__27
 	Ns 10.000000
 	Ni 1.500000
 	d 1.000000
@@ -12,5 +12,3 @@ newmtl Material__27
 	Kd 0.588000 0.588000 0.588000
 	Ks 0.000000 0.000000 0.000000
 	Ke 0.000000 0.000000 0.000000
-	map_Ka E:\3ds Max\素材\游戏model\城市公路\180(楼+路灯）.psd
-	map_Kd E:\3ds Max\素材\游戏model\城市公路\180(楼+路灯）.psd
