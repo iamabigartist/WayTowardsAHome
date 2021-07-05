@@ -54,6 +54,6 @@ public class HexMapGenerator : MonoBehaviour
         Gizmos.color = new Color( 1 , 1 , 1 , 0.3f );
         Gizmos.DrawMesh(
             cur_block.GetComponentInChildren<MeshFilter>().sharedMesh ,
-            mouse_grid_position , Quaternion.Euler( 0 , Paint_rotation , 0 ) , prefab_scale );
+            mouse_grid_position , Quaternion.Euler( 0 , Paint_rotation , 0 ) , prefab_scale * 1.01f );
     }
 }
