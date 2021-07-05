@@ -1413,8 +1413,8 @@ MonoBehaviour:
   ruler:
     gird_scale: 1
     origin_ld: {x: 0, y: 0}
-  mouse_position: {x: 1.010293, y: 0, z: -1.0552378}
-  mouse_grid_position: {x: 1.5, y: 0, z: -0.8660254}
+  mouse_position: {x: -29.11861, y: 0, z: 17.626137}
+  mouse_grid_position: {x: -28.5, y: 0, z: 18.186533}
 --- !u!1 &1452512904
 GameObject:
   m_ObjectHideFlags: 0
