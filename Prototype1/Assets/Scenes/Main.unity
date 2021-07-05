@@ -593,6 +593,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 602045556}
+  - component: {fileID: 602045557}
   m_Layer: 0
   m_Name: "\u68EE\u6797\uFF08\u6700\u7EC8\uFF09(Clone)"
   m_TagString: Untagged
@@ -615,6 +616,27 @@ Transform:
   m_Father: {fileID: 546110729}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &602045557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602045555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee0114aeb67e9354c921b50aa93b3ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cur_block: {fileID: 0}
+  mesh_scale: 0
+  paint_height: 0
+  pen_grid: {fileID: 5060444177187149915, guid: 25b8dbe3ce90eb84aa0d94ab040fe00b, type: 3}
+  ruler:
+    gird_scale: 0
+    origin_ld: {x: 0, y: 0}
+  mouse_position: {x: -32.920563, y: 0, z: -18.75161}
+  mouse_grid_position: {x: 0, y: 0, z: 0}
 --- !u!1 &610757626
 GameObject:
   m_ObjectHideFlags: 0
@@ -1406,15 +1428,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0114aeb67e9354c921b50aa93b3ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cur_block: {fileID: 7301726007968517676, guid: f1bcf7758545cae4082e846d6fb1eba5, type: 3}
+  cur_block: {fileID: 782745550}
   mesh_scale: 0.005
   paint_height: 0
   pen_grid: {fileID: 5060444177187149915, guid: 25b8dbe3ce90eb84aa0d94ab040fe00b, type: 3}
   ruler:
     gird_scale: 1
     origin_ld: {x: 0, y: 0}
-  mouse_position: {x: -29.11861, y: 0, z: 17.626137}
-  mouse_grid_position: {x: -28.5, y: 0, z: 18.186533}
+  mouse_position: {x: 32.426865, y: 0, z: -30.639868}
+  mouse_grid_position: {x: 33, y: 0, z: -31.176914}
 --- !u!1 &1452512904
 GameObject:
   m_ObjectHideFlags: 0
