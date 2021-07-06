@@ -1,7 +1,7 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# 创建的文件:05.07.2021 01:43:21
+# 创建的文件:06.07.2021 17:14:18
 
-newmtl _公路_180_l路灯__最终_24___Default
+newmtl _公路_180_streetlight__final__公路_180_l路灯__最终_24___Default
 	Ns 10.000000
 	Ni 1.500000
 	d 1.000000
